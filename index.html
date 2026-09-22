@@ -103,14 +103,6 @@
  letter-spacing: -.04em;
  }
  .brand span { color: var(--cyan); }
- .brand .hero-photo {
- width: 38px;
- height: 38px;
- display: block;
- object-fit: cover;
- border-radius: 10px;
- border: 1px solid rgba(34,211,238,.28);
-}
  .nav-links { display: flex; gap: 26px; list-style: none; }
  .nav-links a {
  color: var(--muted);
@@ -129,105 +121,238 @@
  }
 
  /* HERO */
- .hero { min-height: 100vh; display: grid; align-items: center; padding: 150px 0 90px; }
- .hero-grid {
- display: grid;
- grid-template-columns: 1.35fr .65fr;
- gap: 70px;
- align-items: center;
- }
- .status {
- display: inline-flex;
- align-items: center;
- gap: 8px;
- padding: 7px 11px;
- border: 1px solid rgba(52,211,153,.22);
- border-radius: 999px;
- background: rgba(52,211,153,.06);
- color: #86efac;
- font: 500 11px "JetBrains Mono", monospace;
- margin-bottom: 22px;
- }
- .status i { width: 7px; height: 7px; background: var(--green); border-radius: 50%; box-shadow: 0 0 12px var(--green); }
- .hero h1 {
- font: 700 clamp(52px, 8vw, 94px)/.92 "Space Grotesk", sans-serif;
- letter-spacing: -.065em;
- }
- .hero h1 .gradient {
- display: block;
- background: linear-gradient(100deg, var(--cyan), var(--blue) 48%, var(--violet));
- -webkit-background-clip: text;
- background-clip: text;
- color: transparent;
- }
- .hero-role {
- margin-top: 24px;
- font: 600 clamp(18px, 2.2vw, 25px) "Space Grotesk", sans-serif;
- color: var(--soft);
- }
- .hero-copy {
- margin-top: 18px;
- max-width: 720px;
- color: var(--muted);
- font-size: 16px;
- }
- .hero-copy strong { color: var(--text); }
- .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
- .btn {
- display: inline-flex;
- align-items: center;
- gap: 8px;
- text-decoration: none;
- padding: 12px 18px;
- border-radius: 11px;
- font: 600 12px "JetBrains Mono", monospace;
- transition: transform .2s, border-color .2s, background .2s;
- }
- .btn:hover { transform: translateY(-2px); }
- .btn-primary { background: var(--cyan); color: #061017; }
- .btn-secondary { border: 1px solid var(--line); background: rgba(255,255,255,.025); color: var(--soft); }
- .hero-meta { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 38px; }
- .hero-meta-item { color: var(--muted); font-size: 12px; }
- .hero-meta-item strong { display: block; color: var(--text); font: 600 13px "JetBrains Mono", monospace; margin-bottom: 2px; }
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 125px 0 70px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 720px;
+  height: 720px;
+  right: -180px;
+  top: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(34,211,238,.12), rgba(96,165,250,.07) 38%, transparent 68%);
+  filter: blur(8px);
+  pointer-events: none;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: 55px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 14px;
+  border: 1px solid rgba(52,211,153,.22);
+  border-radius: 999px;
+  background: rgba(52,211,153,.07);
+  color: #86efac;
+  font: 500 12px "JetBrains Mono", monospace;
+  margin-bottom: 20px;
+}
+.status i {
+  width: 8px;
+  height: 8px;
+  background: var(--green);
+  border-radius: 50%;
+  box-shadow: 0 0 14px var(--green);
+}
+.hero h1 {
+  font: 700 clamp(58px, 7.2vw, 102px)/.88 "Space Grotesk", sans-serif;
+  letter-spacing: -.07em;
+}
+.hero h1 .gradient {
+  display: block;
+  background: linear-gradient(100deg, #22d3ee 0%, #60a5fa 52%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero-role {
+  margin-top: 25px;
+  font: 600 clamp(17px, 2vw, 24px) "Space Grotesk", sans-serif;
+  color: var(--soft);
+}
+.hero-copy {
+  margin-top: 17px;
+  max-width: 720px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+.hero-copy strong { color: var(--text); }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  padding: 13px 20px;
+  border-radius: 11px;
+  font: 600 12px "JetBrains Mono", monospace;
+  transition: transform .2s, border-color .2s, background .2s, box-shadow .2s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary {
+  background: linear-gradient(100deg, #22d3ee, #38bdf8);
+  color: #061017;
+  box-shadow: 0 10px 30px rgba(34,211,238,.18);
+}
+.btn-secondary {
+  border: 1px solid rgba(96,165,250,.28);
+  background: rgba(255,255,255,.025);
+  color: var(--soft);
+}
+.btn-secondary:hover { border-color: rgba(34,211,238,.45); background: rgba(34,211,238,.05); }
+.hero-meta { display: grid; grid-template-columns: repeat(3, auto); gap: 28px; margin-top: 36px; }
+.hero-meta-item { color: var(--muted); font-size: 11px; }
+.hero-meta-item strong { display: block; color: var(--text); font: 600 13px "JetBrains Mono", monospace; margin-bottom: 3px; }
 
- .hero-card {
- position: relative;
- padding: 26px;
- border: 1px solid var(--line);
- border-radius: 24px;
- background: linear-gradient(145deg, rgba(17,28,48,.92), rgba(10,16,28,.76));
- box-shadow: var(--shadow);
- overflow: hidden;
- }
- .hero-card::before {
- content: "";
- position: absolute;
- width: 220px; height: 220px;
- top: -120px; right: -100px;
- background: rgba(34,211,238,.12);
- filter: blur(30px);
- border-radius: 50%;
- }
- .code-window {
- position: relative;
- border: 1px solid var(--line);
- border-radius: 15px;
- background: #060a12;
- overflow: hidden;
- }
- .code-bar { padding: 11px 14px; border-bottom: 1px solid var(--line); display: flex; gap: 6px; }
- .dot { width: 8px; height: 8px; border-radius: 50%; background: #475569; }
- .code {
- padding: 22px;
- font: 500 12px/2 "JetBrains Mono", monospace;
- color: #94a3b8;
- }
- .code .c { color: #64748b; }
- .code .k { color: #c084fc; }
- .code .s { color: #67e8f9; }
- .code .p { color: #f8fafc; }
+.hero-visual {
+  position: relative;
+  min-height: 610px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.portrait-wrap {
+  position: relative;
+  width: min(480px, 90%);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+.portrait-glow {
+  position: absolute;
+  inset: 7%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(34,211,238,.22), rgba(96,165,250,.12) 42%, transparent 70%);
+  filter: blur(28px);
+}
+.portrait-ring, .portrait-ring::before, .portrait-ring::after {
+  position: absolute;
+  border-radius: 50%;
+  content: "";
+}
+.portrait-ring {
+  inset: 4%;
+  border: 2px solid rgba(34,211,238,.75);
+  box-shadow: 0 0 28px rgba(34,211,238,.28), inset 0 0 28px rgba(96,165,250,.10);
+}
+.portrait-ring::before { inset: -15px; border: 1px solid rgba(96,165,250,.55); }
+.portrait-ring::after { inset: -34px; border: 1px solid rgba(167,139,250,.24); }
+.hero-photo-large {
+  position: relative;
+  z-index: 2;
+  width: 70%;
+  height: 70%;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 50%;
+  border: 7px solid rgba(255,255,255,.92);
+  background: #e5e7eb;
+  box-shadow: 0 0 0 5px rgba(34,211,238,.22), 0 0 55px rgba(34,211,238,.24), 0 30px 90px rgba(0,0,0,.42);
+}
+.orbit-dot {
+  position: absolute;
+  z-index: 4;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 22px var(--cyan);
+}
+.orbit-dot.one { left: 8%; top: 34%; }
+.orbit-dot.two { right: 7%; bottom: 27%; background: var(--violet); box-shadow: 0 0 22px var(--violet); }
+.years-badge {
+  position: absolute;
+  z-index: 5;
+  top: 10%;
+  right: 5%;
+  width: 82px;
+  height: 82px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  border-radius: 50%;
+  border: 1px solid rgba(34,211,238,.55);
+  background: rgba(8,18,33,.88);
+  color: var(--text);
+  font: 600 12px/1.3 "JetBrains Mono", monospace;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25), 0 0 25px rgba(34,211,238,.14);
+}
+.visual-note {
+  position: absolute;
+  z-index: 5;
+  right: -1%;
+  top: 25%;
+  width: 150px;
+  color: #93c5fd;
+  font: 500 12px/1.7 "JetBrains Mono", monospace;
+}
+.visual-note::before {
+  content: "↙";
+  display: block;
+  font-size: 30px;
+  color: var(--cyan);
+  line-height: .7;
+  margin-bottom: 5px;
+}
+.capability-card {
+  position: absolute;
+  z-index: 6;
+  left: 2%;
+  right: 2%;
+  bottom: 2%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  padding: 17px 15px;
+  border: 1px solid rgba(96,165,250,.35);
+  border-radius: 18px;
+  background: rgba(10,20,36,.88);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 20px 55px rgba(0,0,0,.35);
+}
+.capability { text-align: center; padding: 7px; }
+.capability-icon {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 9px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(34,211,238,.08);
+  border: 1px solid rgba(34,211,238,.12);
+  color: var(--cyan);
+  font: 700 17px "JetBrains Mono", monospace;
+}
+.capability:nth-child(2) .capability-icon { color: #a5b4fc; background: rgba(99,102,241,.10); }
+.capability:nth-child(3) .capability-icon { color: #c4b5fd; background: rgba(139,92,246,.10); }
+.capability:nth-child(4) .capability-icon { color: #fbbf24; background: rgba(245,158,11,.10); }
+.capability span { display: block; color: var(--soft); font: 500 10px/1.45 "JetBrains Mono", monospace; }
+.hero-motto {
+  position: absolute;
+  right: 10%;
+  bottom: -2%;
+  color: #93a4bd;
+  font: 500 12px "JetBrains Mono", monospace;
+  letter-spacing: .05em;
+}
+.hero-motto::before { content: "❝"; color: var(--cyan); font-size: 26px; margin-right: 8px; vertical-align: middle; }
 
- /* QUICK STATS */
+/* QUICK STATS */
  .stats {
  display: grid;
  grid-template-columns: repeat(4, 1fr);
@@ -366,32 +491,6 @@
  }
  .panel h3 { font: 700 25px "Space Grotesk", sans-serif; margin-bottom: 10px; }
  .panel p { color: var(--muted); font-size: 13px; }
- .education-panel {
- position: relative;
- overflow: hidden;
- min-height: 210px;
- display: flex;
- flex-direction: column;
- justify-content: center;
-}
- .education-panel::before {
- content: "";
- position: absolute;
- width: 180px;
- height: 180px;
- right: -70px;
- top: -80px;
- border-radius: 50%;
- background: rgba(34,211,238,.08);
- filter: blur(12px);
- pointer-events: none;
-}
- .education-panel > * { position: relative; z-index: 1; }
- .education-panel .eyebrow { margin-bottom: 12px; }
- .education-panel h3 { margin-bottom: 12px; }
- .education-panel p { line-height: 1.8; }
- .education-panel p strong { color: var(--soft); }
-
  .contact-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
  .contact-links a {
  text-decoration: none;
@@ -415,12 +514,23 @@
  .reveal.visible { opacity: 1; transform: none; }
 
  @media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-visual { min-height: 560px; margin-top: 10px; }
+
  .hero-grid, .about-grid, .bottom-grid { grid-template-columns: 1fr; }
  .skill-groups, .engineering-grid { grid-template-columns: 1fr 1fr; }
  .stats { grid-template-columns: repeat(2, 1fr); }
  .hero { padding-top: 125px; }
  }
  @media (max-width: 680px) {
+  .hero { padding-top: 105px; }
+  .hero-visual { min-height: 475px; margin-top: 20px; }
+  .portrait-wrap { width: min(390px, 94vw); }
+  .hero-photo-large { width: 68%; height: 68%; }
+  .visual-note { display: none; }
+  .capability-card { left: 0; right: 0; bottom: 0; grid-template-columns: repeat(2, 1fr); }
+  .hero-motto { display: none; }
+
  .container { width: min(var(--max), calc(100% - 30px)); }
  .nav-links { display: none; }
  .section { padding: 80px 0; }
@@ -437,7 +547,6 @@
 <body>
  <nav class="nav">
  <div class="container nav-inner">
- <a class="brand" href="#home"><img class="hero-photo" src="photo.jpg" alt="VM" /></a>
  <ul class="nav-links">
  <li><a href="#about">About</a></li>
  <li><a href="#skills">Stack</a></li>
@@ -451,47 +560,50 @@
 
  <main>
  <section id="home" class="hero">
- <div class="container hero-grid">
- <div>
- <div class="status"><i></i> Software Developer · Hyderabad</div>
- <div class="eyebrow">Full-Stack Engineering</div>
- <h1>Venkata<br><span class="gradient">Madhusudhan</span></h1>
- <div class="hero-role">Next.js · React · Node.js · Hono · PostgreSQL · Redis · Azure</div>
- <p class="hero-copy">
- Full-stack software developer with <strong>5+ years of professional experience</strong>
- building business applications, REST APIs, data-driven workflows and responsive web interfaces.
- Experienced across modern JavaScript stacks as well as enterprise <strong>Angular + .NET</strong> ecosystems.
- </p>
- <div class="hero-actions">
- <a class="btn btn-primary" href="#projects">Explore Projects ↗</a>
- <a class="btn btn-secondary" href="#experience">View Experience</a>
- <a class="btn btn-secondary" href="mailto:p.venkat0107@gmail.com">Let's Connect</a>
- </div>
- <div class="hero-meta">
- <div class="hero-meta-item"><strong>5+ Years</strong>Professional experience</div>
- <div class="hero-meta-item"><strong>Full Stack</strong>Frontend + Backend + DB</div>
- <div class="hero-meta-item"><strong>2021</strong>B.Tech · Computer Science</div>
- </div>
- </div>
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <div class="status"><i></i> Software Developer · Hyderabad</div>
+      <div class="eyebrow">Full-Stack Engineering</div>
+      <h1>Venkata<br><span class="gradient">Madhusudhan</span></h1>
+      <div class="hero-role">Next.js · React · Node.js · Hono · PostgreSQL · Redis · Azure</div>
+      <p class="hero-copy">
+        Full-stack software developer with <strong>5+ years of professional experience</strong>
+        building business applications, REST APIs, data-driven workflows and responsive web interfaces.
+        Experienced across modern JavaScript stacks as well as enterprise <strong>Angular + .NET</strong> ecosystems.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projects">Explore Projects ↗</a>
+        <a class="btn btn-secondary" href="#experience">View Experience</a>
+        <a class="btn btn-secondary" href="mailto:p.venkat0107@gmail.com">Let's Connect</a>
+      </div>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><strong>5+ Years</strong>Professional experience</div>
+        <div class="hero-meta-item"><strong>Full Stack</strong>Frontend + Backend + DB</div>
+        <div class="hero-meta-item"><strong>2021</strong>B.Tech · Computer Science</div>
+      </div>
+    </div>
 
- <aside class="hero-card">
- <div class="code-window">
- <div class="code-bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
- <pre class="code"><span class="c">// engineer.profile</span>
+    <aside class="hero-visual">
+      <div class="portrait-wrap">
+        <div class="portrait-glow"></div>
+        <div class="portrait-ring"></div>
+        <span class="orbit-dot one"></span>
+        <span class="orbit-dot two"></span>
+        <img class="hero-photo-large" src="photo.jpg" alt="Venkata Madhusudhan" />
+        <div class="years-badge">5+<br>Years</div>
+        <div class="visual-note">Passionate about<br>building scalable<br>products</div>
+      </div>
 
-<span class="k">const</span> <span class="p">developer</span> = {
- <span class="s">name</span>: <span class="s">"Venkata Madhusudhan"</span>,
- <span class="s">role</span>: <span class="s">"Full-Stack Developer"</span>,
- <span class="s">frontend</span>: [<span class="s">"React"</span>, <span class="s">"Angular"</span>],
- <span class="s">backend</span>: [<span class="s">"Node.js"</span>, <span class="s">".NET Core"</span>],
- <span class="s">data</span>: [<span class="s">"PostgreSQL"</span>, <span class="s">"SQL Server"</span>],
- <span class="s">testing</span>: [<span class="s">"Jest"</span>, <span class="s">"XUnit"</span>, <span class="s">"NUnit"</span>],
- <span class="s">mindset</span>: <span class="s">"Build • Test • Improve"</span>
-};</pre>
- </div>
- </aside>
- </div>
- </section>
+      <div class="capability-card">
+        <div class="capability"><div class="capability-icon">&lt;/&gt;</div><span>Clean Code</span></div>
+        <div class="capability"><div class="capability-icon">⚙</div><span>Scalable<br>Solutions</span></div>
+        <div class="capability"><div class="capability-icon">♧</div><span>Team<br>Collaboration</span></div>
+        <div class="capability"><div class="capability-icon">✦</div><span>Continuous<br>Learning</span></div>
+      </div>
+      <div class="hero-motto">Build · Learn · Improve · Repeat</div>
+    </aside>
+  </div>
+</section>
 
  <section class="container">
  <div class="stats reveal">
@@ -772,7 +884,7 @@
  <section class="section">
  <div class="container">
  <div class="bottom-grid">
- <div class="panel reveal education-panel">
+ <div class="panel reveal"></div>
  <div class="eyebrow">06 · Education</div>
  <h3>B.Tech — Computer Science</h3>
  <p><strong>GITAM Deemed To Be University</strong><br>Graduated May 2021 · Hyderabad, Telangana</p>
